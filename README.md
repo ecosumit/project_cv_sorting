@@ -117,9 +117,8 @@ The LLM reads both the JD and the full CV and then answers a set of rubric quest
 
 # config.yaml
 
-```bash
-
 Below is the default structure with explanations and examples.
+```bash
 
 job_id: "JD-Template-001"   # Optional label for the job posting
 
@@ -168,6 +167,7 @@ models:                    # Ollama models to use
   embeddings: "nomic-embed-text"
 ```
 # JD.txt
+Example for JD
 
 ```bash
 
