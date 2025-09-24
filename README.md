@@ -77,15 +77,4 @@ See `config.yaml` to tune weights, must‑haves, and rubric.
 ## Evaluation (optional)
 Put your ground‑truth labels in a CSV and run `evaluation/evaluate.py` to compute accuracy/precision/recall/MAP.
 
-## Git Publishing
-```bash
-git init
-git add .
-git commit -m "Initial commit: CV shortlister (Ollama + Streamlit)"
-git branch -M main
-git remote add origin git@github.com:<you>/<repo>.git
-git push -u origin main
-```
-
-## License
-MIT
+![alt text](image.png)
