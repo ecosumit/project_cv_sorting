@@ -117,6 +117,8 @@ The LLM reads both the JD and the full CV and then answers a set of rubric quest
 
 # config.yaml
 
+```bash
+
 Below is the default structure with explanations and examples.
 
 job_id: "JD-Template-001"   # Optional label for the job posting
@@ -164,4 +166,24 @@ bonus_malus:               # Optional bonuses or penalties
 models:                    # Ollama models to use
   llm: "llama3:8b"
   embeddings: "nomic-embed-text"
+```
+# JD.txt
+
+```bash
+
+Position: Machine Learning Engineer
+
+Responsibilities:
+- Design and implement ML models for production.
+- Build and maintain data pipelines and MLOps tooling.
+- Collaborate with product and engineering teams.
+
+Requirements:
+- Minimum 3 years of experience in Machine Learning or Data Science.
+- Strong programming skills in Python and SQL.
+- Experience with cloud platforms such as AWS or GCP.
+- Nice to have: PyTorch, Airflow, Docker, Kubernetes.
+
+
+```
 
