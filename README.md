@@ -90,3 +90,78 @@ Put your ground‑truth labels in a CSV and run `evaluation/evaluate.py` to comp
 ![alt text](image-2.png)
 
 ![alt text](image-3.png)
+
+
+## Read Output
+
+
+| Column            | Meaning                                                                                                                                                        |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **gate\_pass**    | `True` if the CV satisfied all “must-have” requirements (minimum years, required skills, etc.) defined in **`config.yaml` → `must_haves`**. Otherwise `False`. |
+| **gate\_reasons** | List of reasons why the candidate failed the gate. Examples: `["Years of experience 1.5 < 3", "Missing required skill: SQL"]`. Empty if `gate_pass` is `True`. |
+
+
+
+
+| Column           | Meaning                                                                                                                                                                         |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **scores**       | A JSON-like object storing all individual layer scores (keywords, semantic, rubric, bonus\_malus). Example: `{"keywords":0.82,"semantic":0.74,"rubric":0.8,"bonus_malus":0.1}`. |
+| **kw**           | Convenience column: keyword-coverage score extracted from `scores.keywords` (0–1). Measures how many critical/desired skills appear in the CV.                                  |
+| **sem**          | Semantic-similarity score (0–1). How close the overall text of the CV is to the JD using Ollama embeddings.                                                                     |
+| **rubric**       | Average rubric score (0–1). The LLM reads the JD and CV and grades each rubric question on a 0–5 scale, normalized to 0–1.                                                      |
+| **bonus\_malus** | Additional bonus/penalty value based on special signals (e.g., leadership keywords, publications, job hopping) defined in **`config.yaml` → `bonus_malus`**.                    |
+
+
+While keyword counts and semantic similarity capture surface matches, rubric evaluations provide qualitative, evidence-based judgments.
+The LLM reads both the JD and the full CV and then answers a set of rubric questions that you define in config.yaml.
+
+# config.yaml
+
+Below is the default structure with explanations and examples.
+
+job_id: "JD-Template-001"   # Optional label for the job posting
+
+weights:                   # Relative importance of each scoring layer
+  keywords: 0.25           # Keyword match
+  semantic: 0.35           # Embedding similarity
+  rubric: 0.35             # LLM rubric evaluation
+  bonus_malus: 0.05        # Optional bonuses/penalties
+
+must_haves:                # Hard filters (candidate must pass to be “gate_pass: True”)
+  min_years_total: 3
+  required_skills: ["python", "sql"]
+  nice_to_have: ["pytorch", "aws", "airflow"]
+  location_any_of: ["Remote", "India", "EU"]
+
+keywords:                  # Keyword weighting for scoring
+  critical:
+    python: 3
+    sql: 2
+  desired:
+    pytorch: 2
+    aws: 2
+    airflow: 1
+
+semantic:                  # Semantic similarity settings
+  chunk_size: 1500         # Characters per chunk for embeddings
+  overlap: 150             # Overlap between chunks
+  topk: 8                  # Top-k chunks to average for semantic score
+
+rubric:                    # LLM rubric questions
+  - name: "Modeling depth"
+    question: "How strong is the candidate in ML modeling beyond libraries?"
+  - name: "Production experience"
+    question: "Evidence of shipping ML to prod (monitoring, CI/CD, data/feature pipelines)?"
+  - name: "Communication & impact"
+    question: "Clear impact, collaboration, writing/speaking?"
+
+bonus_malus:               # Optional bonuses or penalties
+  recency_years: 3
+  leadership_bonus: 0.5
+  publication_bonus: 0.3
+  job_hop_malus: -0.3
+
+models:                    # Ollama models to use
+  llm: "llama3:8b"
+  embeddings: "nomic-embed-text"
+
