@@ -1,0 +1,19 @@
+cv-shortlister-ollama/
+├─ app.py                     # Streamlit UI
+├─ config.yaml                # Weights, must-haves, rubric, model names
+├─ src/
+│  ├─ parsing.py              # pyresparser + fallback; PDF/DOCX/TXT
+│  ├─ jd_parser.py            # JD → structured fields via LangChain + Ollama
+│  ├─ scoring.py              # keyword/semantic/rubric/bonus layers
+│  ├─ ranker.py               # end-to-end scoring composition
+│  ├─ prompts.py              # strict JSON rubric prompt
+│  └─ ui_components.py        # Streamlit table + expanders
+├─ data/
+│  ├─ sample_jd.txt
+│  └─ sample_cvs/ (2 sample TXT resumes)
+├─ evaluation/evaluate.py     # accuracy/precision/recall/MAP
+├─ scripts/setup_ollama.sh    # pulls llama3:8b + nomic-embed-text
+├─ scripts/docker/Dockerfile  # optional container (mount Ollama from host)
+├─ requirements.txt
+├─ README.md
+└─ .gitignore

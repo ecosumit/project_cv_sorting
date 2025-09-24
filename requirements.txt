@@ -1,0 +1,15 @@
+streamlit
+pymupdf==1.24.9
+python-docx
+ruamel.yaml
+pandas
+numpy
+rapidfuzz
+tenacity
+langchain
+langchain-community
+ollama
+pydantic
+spacy
+pyresparser
+scikit-learn

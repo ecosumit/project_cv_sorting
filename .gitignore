@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.streamlit/
+*.csv
+*.json
+data/sample_cvs/*.pdf
+data/sample_cvs/*.docx
+data/sample_cvs/*.txt
+uploads/

@@ -1,0 +1,12 @@
+Position: Machine Learning Engineer
+
+Responsibilities:
+- Design and implement ML models for production.
+- Build and maintain data pipelines and MLOps tooling.
+- Collaborate with product and engineering teams.
+
+Requirements:
+- Minimum 3 years of experience in Machine Learning or Data Science.
+- Strong programming skills in Python and SQL.
+- Experience with cloud platforms such as AWS or GCP.
+- Nice to have: PyTorch, Airflow, Docker, Kubernetes.

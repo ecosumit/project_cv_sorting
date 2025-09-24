@@ -1,0 +1,11 @@
+We are hiring a Machine Learning Engineer.
+
+Responsibilities:
+- Build ML models and ship to production
+- Own data pipelines and MLOps
+- Collaborate with product and engineering
+
+Requirements:
+- 2+ years experience in ML/DS
+- Strong Python and SQL
+- Nice to have: PyTorch, AWS, Airflow

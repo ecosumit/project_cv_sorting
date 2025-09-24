@@ -1,0 +1,42 @@
+job_id: "JD-Template-001"
+weights:
+  keywords: 0.25
+  semantic: 0.35
+  rubric: 0.35
+  bonus_malus: 0.05
+must_haves:
+  min_years_total: 2
+  required_skills: ["python", "sql"]
+  nice_to_have: ["pytorch", "aws", "airflow"]
+  location_any_of: ["Remote", "EU", "India"]
+keywords:
+  critical:
+    python: 3
+    sql: 2
+  desired:
+    pytorch: 2
+    aws: 2
+    airflow: 1
+semantic:
+  chunk_size: 1500
+  overlap: 150
+  topk: 8
+rubric:
+  - name: "Modeling depth"
+    question: "How strong is the candidate in ML modeling beyond libraries?"
+  - name: "Production experience"
+    question: "Evidence of shipping ML to prod (monitoring, CI/CD, data/feature pipelines)?"
+  - name: "Data engineering"
+    question: "Can they handle data quality, orchestration, and SQL at scale?"
+  - name: "Systems & scalability"
+    question: "Experience with performance, distributed training/inference?"
+  - name: "Communication & impact"
+    question: "Clear impact, collaboration, writing/speaking?"
+bonus_malus:
+  recency_years: 3
+  leadership_bonus: 0.5
+  publication_bonus: 0.3
+  job_hop_malus: -0.3
+models:
+  llm: "llama3:8b"
+  embeddings: "nomic-embed-text"
