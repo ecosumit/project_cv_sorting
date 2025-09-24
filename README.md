@@ -77,4 +77,16 @@ See `config.yaml` to tune weights, must‑haves, and rubric.
 ## Evaluation (optional)
 Put your ground‑truth labels in a CSV and run `evaluation/evaluate.py` to compute accuracy/precision/recall/MAP.
 
+## App in Streamlit
+
+
+
 ![alt text](image.png)
+
+
+![alt text](image-1.png)
+
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
