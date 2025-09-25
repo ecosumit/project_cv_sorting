@@ -18,6 +18,8 @@ End‑to‑end, local CV sorting & scoring system that parses resumes (PDF/DOCX/
 
 > This project follows the provided guideline document exactly (models, steps, evaluation, repo hygiene).
 
+<video controls src="cvsorting.mp4" title="App"></video>
+
 ## Architecture
 ```
 cv-shortlister-ollama/
